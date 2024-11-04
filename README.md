@@ -1,16 +1,32 @@
-# vtext
+# Voice-to-Text App
 
-A new Flutter project.
+A user-friendly voice-to-text app that allows users to convert their spoken words into text. The app also provides a convenient way to copy the generated text for easy sharing or saving.
+
+## Features
+
+- **Voice Recognition**: Users can speak, and the app will convert their words into text instantly.
+- **Copy Functionality**: Easily copy the generated text for use in other apps or documents.
+- **Splash Screen**: Welcomes users with a splash screen upon opening the app for a polished user experience.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+Follow the instructions below to set up and run the app on your local device.
 
-A few resources to get you started if this is your first Flutter project:
+### Prerequisites
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- Flutter SDK (latest version)
+- Compatible mobile device or emulator
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Installation
+
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/mdtaosifhossain3/flutter-voice-to-text-app.git
+
+  ```bash
+   cd voice-to-text-app
+   flutter pub get
+   flutter run
+
+
+
