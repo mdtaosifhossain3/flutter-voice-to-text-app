@@ -1,10 +1,9 @@
 import 'dart:async';
-
 import 'package:animation_wrappers/animation_wrappers.dart';
 import 'package:flutter/material.dart';
-
-import 'home_view.dart';
-import 'my_colors.dart';
+import 'package:vtext/views/home_view.dart';
+import 'package:vtext/views/otpView/otp_send_view.dart';
+import '../my_colors.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -18,7 +17,7 @@ class _SplashViewState extends State<SplashView> {
   void initState() {
     Timer(const Duration(seconds: 2), () {
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) {
-        return const HomeView();
+        return HomeView();
       }));
     });
     super.initState();

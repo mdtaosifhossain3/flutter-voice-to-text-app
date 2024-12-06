@@ -1,8 +1,11 @@
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
+import 'package:popover/popover.dart';
 import 'package:speech_to_text/speech_to_text.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:vtext/views/otpView/otp_send_view.dart';
 
-import 'my_colors.dart';
+import '../my_colors.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -23,19 +26,72 @@ class _HomeViewState extends State<HomeView> {
     super.initState();
   }
 
+  // Function to send a message to the SMS app
+  Future<void> sendStopMessage() async {
+    const phoneNumber = '21213';
+    const message = 'STOP txtvc';
+
+    final Uri smsUri = Uri(
+      scheme: 'sms',
+      path: phoneNumber,
+      queryParameters: {'body': message}, // pre-fill message
+    );
+
+    // Check if the URL can be launched (i.e., if SMS is available)
+    if (await canLaunchUrl(smsUri)) {
+      await launchUrl(smsUri); // Opens SMS app with pre-filled message
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Could not launch SMS')),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         centerTitle: true,
         backgroundColor: MyColors.primaryColor,
         foregroundColor: MyColors.whiteColor,
-        actions: const [
-          Padding(
-            padding: EdgeInsets.only(right: 12.0),
-            child: Icon(Icons.more_vert),
-          )
-        ],
+        // actions: [
+        //   Builder(
+        //     builder: (context) {
+        //       return IconButton(
+        //           onPressed: () async {
+        //             await showPopover(
+        //                 context: context,
+        //                 bodyBuilder: (context) => Column(
+        //                       children: [
+        //                         TextButton(
+        //                             onPressed: () async {
+        //                               await sendStopMessage();
+        //                               await Future.delayed(
+        //                                   const Duration(seconds: 6));
+        //                               Navigator.push(context,
+        //                                   MaterialPageRoute(builder: (_) {
+        //                                 return OtpSendView();
+        //                               }));
+        //                             },
+        //                             child: const Text(
+        //                               "Unsubscribed",
+        //                               style: TextStyle(color: Colors.red),
+        //                             ))
+        //                       ],
+        //                     ),
+        //                 width: 120,
+        //                 height: 50,
+        //                 backgroundColor: MyColors.blackColor,
+        //                 direction: PopoverDirection.bottom);
+        //           },
+        //           icon: const Icon(
+        //             Icons.more_vert,
+        //             color: MyColors.whiteColor,
+        //           ));
+        //     },
+        //   )
+        // ],
         title: _speechToText.isNotListening && _confidenceLevel > 0
             ? Text(
                 "Confidence:${(_confidenceLevel * 100).toStringAsFixed(1)}% ",
