@@ -55,43 +55,43 @@ class _HomeViewState extends State<HomeView> {
         centerTitle: true,
         backgroundColor: MyColors.primaryColor,
         foregroundColor: MyColors.whiteColor,
-        // actions: [
-        //   Builder(
-        //     builder: (context) {
-        //       return IconButton(
-        //           onPressed: () async {
-        //             await showPopover(
-        //                 context: context,
-        //                 bodyBuilder: (context) => Column(
-        //                       children: [
-        //                         TextButton(
-        //                             onPressed: () async {
-        //                               await sendStopMessage();
-        //                               await Future.delayed(
-        //                                   const Duration(seconds: 6));
-        //                               Navigator.push(context,
-        //                                   MaterialPageRoute(builder: (_) {
-        //                                 return OtpSendView();
-        //                               }));
-        //                             },
-        //                             child: const Text(
-        //                               "Unsubscribed",
-        //                               style: TextStyle(color: Colors.red),
-        //                             ))
-        //                       ],
-        //                     ),
-        //                 width: 120,
-        //                 height: 50,
-        //                 backgroundColor: MyColors.blackColor,
-        //                 direction: PopoverDirection.bottom);
-        //           },
-        //           icon: const Icon(
-        //             Icons.more_vert,
-        //             color: MyColors.whiteColor,
-        //           ));
-        //     },
-        //   )
-        // ],
+        actions: [
+          Builder(
+            builder: (context) {
+              return IconButton(
+                  onPressed: () async {
+                    await showPopover(
+                        context: context,
+                        bodyBuilder: (context) => Column(
+                              children: [
+                                TextButton(
+                                    onPressed: () async {
+                                      await sendStopMessage();
+                                      await Future.delayed(
+                                          const Duration(seconds: 6));
+                                      Navigator.push(context,
+                                          MaterialPageRoute(builder: (_) {
+                                        return OtpSendView();
+                                      }));
+                                    },
+                                    child: const Text(
+                                      "Unsubscribe",
+                                      style: TextStyle(color: Colors.red),
+                                    ))
+                              ],
+                            ),
+                        width: 120,
+                        height: 50,
+                        backgroundColor: MyColors.blackColor,
+                        direction: PopoverDirection.bottom);
+                  },
+                  icon: const Icon(
+                    Icons.more_vert,
+                    color: MyColors.whiteColor,
+                  ));
+            },
+          )
+        ],
         title: _speechToText.isNotListening && _confidenceLevel > 0
             ? Text(
                 "Confidence:${(_confidenceLevel * 100).toStringAsFixed(1)}% ",

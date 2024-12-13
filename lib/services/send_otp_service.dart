@@ -73,7 +73,7 @@ class SendOTPService {
     // Send HTTP POST request to the API
     try {
       final response = await http.post(
-        Uri.parse('${dotenv.env["API_LINK"]}/otp_request_txtvc.php'),
+        Uri.parse('${dotenv.env["API_LINK"]}/request_otp_txtvc.php'),
         body: data,
       );
 
@@ -116,13 +116,13 @@ class SendOTPService {
       Navigator.pop(context);
 
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Network Issue ${e.toString()}')),
+        SnackBar(content: Text('Network Issue')),
       );
     } catch (e) {
       Navigator.pop(context);
       // Handle error in case of network issues
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error: $e')),
+        SnackBar(content: Text('Something went wrong')),
       );
     }
   }

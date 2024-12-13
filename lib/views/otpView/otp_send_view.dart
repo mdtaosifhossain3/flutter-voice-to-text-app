@@ -16,7 +16,7 @@ class OtpSendView extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.00),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             //-----------------------Logo-----------------------
@@ -39,6 +39,8 @@ class OtpSendView extends StatelessWidget {
               ],
             ),
 
+            SizedBox(height: MediaQuery.of(context).size.height * .12,),
+
             Column(
               children: [
                 //-----------------------Register-----------------------
@@ -50,7 +52,7 @@ class OtpSendView extends StatelessWidget {
                         contentPadding: const EdgeInsets.only(left: 15),
                         fillColor: MyColors.whiteColor,
                         filled: true,
-                        hintText: "Enter your phone number...",
+                        hintText: "Enter your Robi/Airtel number...",
                         hintStyle: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w400,
